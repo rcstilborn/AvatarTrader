@@ -15,6 +15,7 @@
     "cookie-parser": "^1.1.0",
     "csurf": "^1.6.0",
     "emailjs": "^0.3.11",
+    "sendgrid": "1.6.0",
     "express": "^4.8.7",
     "express-session": "^1.2.0",
     "helmet": "^0.6.0",

@@ -67,28 +67,46 @@ exports = module.exports = function(req, res, options) {
           attachments.push(options.attachments[i]);
         }
       }
-
-      var emailjs = require('emailjs/email');
-      var emailer = emailjs.server.connect( req.app.config.smtp.credentials );
-      emailer.send({
-        from: options.from,
+      var sendgrid  = require('sendgrid')(req.app.config.sendgrid.credentials.api_user, req.app.config.sendgrid.credentials.api_key);
+      sendgrid.send({
+        from: req.app.config.smtp.from.address,
+        fromname: req.app.config.smtp.from.name,
         to: options.to,
-        'reply-to': options.replyTo || options.from,
-        cc: options.cc,
-        bcc: options.bcc,
+        //replyto: options.replyTo || options.from,
         subject: options.subject,
         text: options.text,
-        attachment: attachments
-      }, function(err, message) {
-        if (err) {
-          options.error('Email failed to send. '+ err);
-          return;
-        }
-        else {
-          options.success(message);
-          return;
+        html: options.html
+        }, function(err, json) {
+          if (err) {
+            options.error('Email failed to send. '+ err);
+            return;
+        } else {
+            options.success(json);
+            return;
         }
       });
+
+      //var emailjs = require('emailjs/email');
+      //var emailer = emailjs.server.connect( req.app.config.smtp.credentials );
+      //emailer.send({
+      //  from: options.from,
+      //  to: options.to,
+      //  'reply-to': options.replyTo || options.from,
+      //  cc: options.cc,
+      //  bcc: options.bcc,
+      //  subject: options.subject,
+      //  text: options.text,
+      //  attachment: attachments
+      //}, function(err, message) {
+      //  if (err) {
+      //    options.error('Email failed to send. '+ err);
+      //    return;
+      //  }
+      //  else {
+      //    options.success(message);
+      //    return;
+      //  }
+      //});
     }
   );
 };
