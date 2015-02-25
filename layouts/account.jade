@@ -22,9 +22,14 @@ html
             li: a(href='/account/') My Account
             li: a(href='/account/settings/') Settings
           ul.nav.navbar-nav.pull-right
-            li: a(href='/logout/')
-              i.fa.fa-user
-              |  Sign Out
+            if user && user.username
+              li: a(href='#{user.defaultReturnUrl}')
+                i.fa.fa-user
+                |   #{user.username}
+            else
+              li: a(href='/logout/')
+                i.fa.fa-user
+                |  Sign Out
 
     div.page
       div.container
