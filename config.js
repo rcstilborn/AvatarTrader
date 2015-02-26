@@ -2,8 +2,8 @@
 
 exports.port = process.env.PORT || 3000;
 exports.mongodb = {
-  //uri: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/drywall'
-  uri: 'mongodb://ec2:MySecret1@ds049161.mongolab.com:49161/staging'
+  uri: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/drywall'
+  //uri: 'mongodb://ec2:MySecret1@ds049161.mongolab.com:49161/staging'
 };
 exports.companyName = 'AvatarTrader, Inc.';
 exports.projectName = 'AvatarTrader';
