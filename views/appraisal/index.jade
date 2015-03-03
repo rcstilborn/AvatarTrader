@@ -1,0 +1,53 @@
+extends ../../layouts/default
+
+block head
+  title Avatar Appraisal
+
+//block neck
+//  link(rel='stylesheet', href='/views/signup/index.min.css?#{cacheBreaker}')
+
+block feet
+  script(src='/views/appraisal/index.min.js?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-3
+    div.col-sm-6
+      div.page-header
+        h1 Avatar Appraisal
+      div#appraisal
+    div.col-sm-3
+
+  script(type='text/template', id='tmpl-appraisal')
+    form
+      div.alerts
+        |<% _.each(errors, function(err) { %>
+        div.alert.alert-danger.alert-dismissable
+          button.close(type='button', data-dismiss='alert') &times;
+          |<%- err %>
+        |<% }); %>
+      div.form-group(class!='<%- errfor.company ? "has-error" : "" %>')
+        label Game Company:
+        select.form-control(type='text', name='company', value!='<%= company %>')
+          each val in companyList
+            option=val
+        span.help-block <%- errfor.company %>
+      div.form-group(class!='<%- errfor.game ? "has-error" : "" %>')
+        label Game:
+        select.form-control(type='text', name='game', value!='<%= game %>')
+          each val in gameList
+            option=val
+        span.help-block <%- errfor.game %>
+      div.form-group(class!='<%- errfor.realm ? "has-error" : "" %>')
+        label Realm:
+        select.form-control(type='text', name='realm', value!='<%= game %>')
+          each val in realmList
+            option=val
+        span.help-block <%- errfor.realm %>
+      div.form-group(class!='<%- errfor.avatar ? "has-error" : "" %>')
+        label Enter Your Avatar's Name:
+        input.form-control(type='text', name='avatar', value!='<%= avatar %>')
+        span.help-block <%- errfor.avatar %>
+      div.form-group
+        button.btn.btn-primary.btn-appraisal(type='button') Appraise My Character
+          

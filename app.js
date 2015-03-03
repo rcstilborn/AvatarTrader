@@ -85,6 +85,7 @@ app.use(require('./views/http/index').http500);
 //setup utilities
 app.utility = {};
 app.utility.sendmail = require('./util/sendmail');
+app.utility.avatarDownload = require('./util/AvatarDownload');
 app.utility.slugify = require('./util/slugify');
 app.utility.workflow = require('./util/workflow');
 

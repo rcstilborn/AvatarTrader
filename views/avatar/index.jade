@@ -1,0 +1,25 @@
+extends ../../layouts/default
+
+block head
+  title Avatar Details
+
+//block neck
+//  link(rel='stylesheet', href='/views/signup/index.min.css?#{cacheBreaker}')
+
+//block feet
+//  script(src='/views/avatar/index.min.js?#{cacheBreaker}')
+
+block body
+  div.row
+    div.col-sm-3
+    div.col-sm-6
+      div.page-header
+        p #{company} / #{game} / #{realm}
+        h1 #{name}
+      div#avatar
+        p Battlegroup: #{detail.battlegroup}
+        p Level: #{detail.level}
+        p Achievement Points: #{detail.achievementPoints}
+        p Total Honorable Kills: #{detail.totalHonorableKills}
+        img(src=image)
+  div.col-sm-3

@@ -39,6 +39,14 @@ exports = module.exports = function(app, passport) {
   app.get('/signup/', require('./views/signup/index').init);
   app.post('/signup/', require('./views/signup/index').signup);
 
+  //appraisal
+  app.get('/appraisal/', require('./views/appraisal/index').init);
+  app.post('/appraisal/', require('./views/appraisal/index').appraise);
+
+  //avatar
+  app.get('/avatar/:id', require('./views/avatar/index').read);
+  //app.post('/avatar/', require('./views/avatar/index').appraise);
+
   //social sign up
   app.post('/signup/social/', require('./views/signup/index').signupSocial);
   app.get('/signup/twitter/', passport.authenticate('twitter', { callbackURL: '/signup/twitter/callback/' }));
