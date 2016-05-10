@@ -7,7 +7,7 @@ exports.mongodb = {
 };
 exports.companyName = 'AvatarTrader, Inc.';
 exports.projectName = 'AvatarTrader';
-exports.systemEmail = '***REMOVED***';
+exports.systemEmail = '';
 exports.cryptoKey = 'ThisIsMyBigSecret!';
 exports.loginAttempts = {
   forIp: 50,
@@ -18,7 +18,7 @@ exports.requireAccountVerification = true;
 exports.smtp = {
   from: {
     name: process.env.SMTP_FROM_NAME || exports.projectName +'',
-    address: process.env.SMTP_FROM_ADDRESS || 'donotreply@halathome.com'
+    address: process.env.SMTP_FROM_ADDRESS || ''
   },
   credentials: {
     user: process.env.SMTP_USERNAME || '',
@@ -29,8 +29,8 @@ exports.smtp = {
 };
 exports.sendgrid = {
   credentials: {
-    api_user: '***REMOVED***',
-    api_key: '***REMOVED***'
+    api_user: '',
+    api_key: ''
   }
 };
 exports.oauth = {
